@@ -4,14 +4,14 @@ import PersonIcon from "@mui/icons-material/Person";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ChatIcon from "@mui/icons-material/Chat";
-import profilePic from "../../assets/Images/profile-pic.png";
+import profilePic from "../../assets/People/profile-pic.png";
 
 export default function Topbar() {
   return (
     <>
       <div className="topbarContainer">
         <div className="topbarLeft">
-          <span className="logo">SocialBook</span>
+          <span className="logo">ShareSpace</span>
         </div>
         <div className="topbarCenter">
           <div className="searchbar">

@@ -11,7 +11,8 @@ import EventIcon from "@mui/icons-material/Event";
 import SchoolIcon from "@mui/icons-material/School";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 
-import friend1 from "../../assets/Images/member-1.png";
+
+import friend1 from "../../assets/People/member-1.png";
 
 export default function Sidebar() {
   return (
