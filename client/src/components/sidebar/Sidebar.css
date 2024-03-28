@@ -3,6 +3,9 @@
   height: calc(100vh - 50px);
   background-color: #fefefe;
   overflow-y: scroll;
+  overflow-x: hidden;
+  position: sticky;
+  top: 55px;
 }
 
 ::-webkit-scrollbar {
@@ -52,16 +55,3 @@
   list-style: none;
 }
 
-.sidebarFriend {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  gap: 10px;
-}
-
-.sidebarFriendImg {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}

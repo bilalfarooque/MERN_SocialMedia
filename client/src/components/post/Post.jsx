@@ -1,43 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Post.css";
-import profilePic from "../../assets/People/profile-pic.png";
-import postImage from "../../assets/Images/feed-image-1.png"
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import like from  '../../assets/Icons/like-blue.png'
-import heart from  '../../assets/Icons/heart.png'
+import defaultPic from "../../assets/People/profilePicDefault.jpg";
+import postImage from "../../assets/Images/feed-image-1.png";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-export default function Post() {
+import { Users } from "../../dummyData.jsx";
+
+export default function Post({ post }) {
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const user = Users.filter((e) => e.id == post.id);
+
+  console.log(user[0]);
+
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
+
+  console.log(post);
   return (
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-            <img src={profilePic} alt="" className="postProfileImg" />
-            <span className="postUserName">Username</span>
-            <span className="postDate">5 mins ago</span>
+            <img
+              src={user[0].profilePicture ? user[0].profilePicture : defaultPic}
+              alt=""
+              className="postProfileImg"
+            />
+            <span className="postUserName">{user[0].username}</span>
+            <span className="postDate">{post.date}</span>
           </div>
           <div className="postTopRight">
-
             <MoreVertIcon />
           </div>
         </div>
-        
+
         <div className="postCenter">
-            <p className="postText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere tristique arcu, a cursus ante sem </p>
-            <img src={postImage} alt="" className="postImg" />
+          <p className="postText">{post?.desc}</p>
+          <img src={postImage} alt="" className="postImg" />
         </div>
-        
+
         <div className="postBottom">
-            <div className="postBottomLeft">
-                <img src={like} className="postIcon" alt="" />
-                <img src={heart} className="postIcon" alt="" />
-                <span className="postLikes">32 people likes this</span>
-            </div>
-            <div className="postBottomRight">
-                <span className="postCommentText">9 comments
-                </span>
-            </div>
+          <div className="postBottomLeft">
+            <ThumbUpIcon
+              style={{ fill: isLiked ? "#1877f2" : "grey" }}
+              onClick={likeHandler}
+            />
+            {/* <FavoriteIcon
+              style={{ fill: isLiked ? "red" : "grey" }}
+              onClick={likeHandler}
+            /> */}
+
+            <span className="postLikes">{like} people likes this</span>
+          </div>
+          <div className="postBottomRight">
+            <span className="postCommentText">{post.comment} comments</span>
+          </div>
         </div>
       </div>
     </div>
